@@ -1,105 +1,104 @@
 # Chatbot UI
 
-Chatbot UI is an open source chat UI for AI models.
+Chatbot UI 是一个用于AI模型的开源聊天UI
 
-See a [demo](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
+查看[演示](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
 
 ![Chatbot UI](./public/screenshots/screenshot-0402023.jpg)
 
-## Updates
+## 更新
 
-Chatbot UI will be updated over time.
+Chatbot UI 将随着时间的推移而更新
 
-Expect frequent improvements.
+期待接下来频繁的改进
 
-**Next up:**
+**接下来:**
 
-- [ ] Sharing
-- [ ] "Bots"
+- [ ] 分享
+- [ ] "机器人"
 
-## Deploy
+## 部署
 
 **Vercel**
 
-Host your own live version of Chatbot UI with Vercel.
+使用vercel托管您的实时版本的聊天机器人UI
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmckaywrigley%2Fchatbot-ui)
 
 **Docker**
 
-Build locally:
+本地构建:
 
 ```shell
-docker build -t chatgpt-ui .
+docker build -t chatgpt-ui 
 docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
 ```
 
-Pull from ghcr:
+从 ghcr 拉取:
 
 ```
 docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/mckaywrigley/chatbot-ui:main
 ```
 
-## Running Locally
+## 本地运行
 
-**1. Clone Repo**
+**1. 克隆仓库**
 
 ```bash
 git clone https://github.com/mckaywrigley/chatbot-ui.git
 ```
 
-**2. Install Dependencies**
+**2. 安装 Dependencies**
 
 ```bash
 npm i
 ```
 
-**3. Provide OpenAI API Key**
+**3. 提供 OpenAI API Key**
 
-Create a .env.local file in the root of the repo with your OpenAI API Key:
-
+使用您的OpenAI API在存储库的根目录中创建一个 .env.local 文件:
 ```bash
 OPENAI_API_KEY=YOUR_KEY
 ```
 
-> You can set `OPENAI_API_HOST` where access to the official OpenAI host is restricted or unavailable, allowing users to configure an alternative host for their specific needs.
+> 您可以设置 `OPENAI_API_HOST` 对官方OpenAI主机的访问受到限制或不可用,从而允许用户根据自己的特定的需求配置替代主机
 
-> Additionally, if you have multiple OpenAI Organizations, you can set `OPENAI_ORGANIZATION` to specify one.
+> 此外,如果您有多个OpenAI组织,您可以设置`OPENAI_ORGANIZATION` 为指定一个
 
-**4. Run App**
+**4. 运行应用程序**
 
 ```bash
 npm run dev
 ```
 
-**5. Use It**
+**5. 使用它**
 
-You should be able to start chatting.
+您可以开始跟它聊天了
 
-## Configuration
+## 配置
 
-When deploying the application, the following environment variables can be set:
+部署应用程序时,可以设置以下变量环境:
 
 | Environment Variable              | Default value                  | Description                                                                                                                               |
 | --------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| OPENAI_API_KEY                    |                                | The default API key used for authentication with OpenAI                                                                                   |
-| OPENAI_API_HOST                   | `https://api.openai.com`       | The base url, for Azure use `https://<endpoint>.openai.azure.com`                                                                         |
-| OPENAI_API_TYPE                   | `openai`                       | The API type, options are `openai` or `azure`                                                                                             |
-| OPENAI_API_VERSION                | `2023-03-15-preview`           | Only applicable for Azure OpenAI                                                                                                          |
-| AZURE_DEPLOYMENT_ID               |                                | Needed when Azure OpenAI, Ref [Azure OpenAI API](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions) |
-| OPENAI_ORGANIZATION               |                                | Your OpenAI organization ID                                                                                                               |
-| DEFAULT_MODEL                     | `gpt-3.5-turbo`                | The default model to use on new conversations, for Azure use `gpt-35-turbo`                                                               |
-| NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | The default system prompt to use on new conversations                                                                                     |
-| NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |
-| GOOGLE_API_KEY                    |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
-| GOOGLE_CSE_ID                     |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
+| OPENAI_API_KEY                    |                                | 用于 OpenAI 身份验证的默认 API 密钥                                                                                   |
+| OPENAI_API_HOST                   | `https://api.openai.com`       | 基于 url, 供 Azure 使用 `https://<endpoint>.openai.azure.com`                                                                         |
+| OPENAI_API_TYPE                   | `openai`                       | API选项, 选项为 `openai` 或 `azure`                                                                                             |
+| OPENAI_API_VERSION                | `2023-03-15-preview`           | 仅适用于 Azure OpenAI                                                                                                          |
+| AZURE_DEPLOYMENT_ID               |                                | Azure OpenAI 时需要，参考[Azure OpenAI API](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions) |
+| OPENAI_ORGANIZATION               |                                | 您的 OpenAI 组织 ID                                                                                                               |
+| DEFAULT_MODEL                     | `gpt-3.5-turbo`                | 新对话中使用的默认模型，供 Azure 使用 `gpt-35-turbo`                                                               |
+| NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [看这里](utils/app/const.ts) | 用于新对话的默认系统提示                                                                                     |
+| NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | 新对话使用的默认温度                                                                                       |
+| GOOGLE_API_KEY                    |                                | 请看[自定义搜索 JSON API 文档][GCSE]                                                                                          |
+| GOOGLE_CSE_ID                     |                                | 请看 [自定义搜索 JSON API 文档][GCSE]                                                                                          |
 
-If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have to provide their own key.
+如果您不提供 OpenAI API 密钥 `OPENAI_API_KEY`, 用户将必须提供自己的密钥
+如果您没有 OpenAI API 密钥，可以 [在此处](https://platform.openai.com/account/api-keys)获取
 
-If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
+## 联系
 
-## Contact
-
-If you have any questions, feel free to reach out to Mckay on [Twitter](https://twitter.com/mckaywrigley).
+如果您有任何疑问,请随时在Twitter上联系[Mckay](https://twitter.com/mckaywrigley).
 
 [GCSE]: https://developers.google.com/custom-search/v1/overview
+
